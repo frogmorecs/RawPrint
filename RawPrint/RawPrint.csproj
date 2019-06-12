@@ -6,10 +6,6 @@
     <PackageId>RawPrint</PackageId>
     <AssemblyTitle>Raw Print</AssemblyTitle>
     <Description>.Net library to send files directly to a Windows printer bypassing the printer driver.</Description>
-    <Company>Frogmore Computer Services Ltd</Company>
-    <Authors>Tony Edgecombe</Authors>
-    <Owners>tonyedgecombe</Owners>
-    <Copyright>Copyright 2017 Frogmore Computer Services Ltd</Copyright>
     <PackageLicenseExpression>BSD-2-Clause-FreeBSD</PackageLicenseExpression>
     <PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
     <PackageProjectUrl>https://github.com/tonyedgecombe/RawPrint</PackageProjectUrl>
