@@ -1,0 +1,9 @@
+<Project>
+  <PropertyGroup>
+    <Company>Frogmore Computer Services Ltd</Company>
+    <Authors>Frogmore Computer Services Ltd</Authors>
+    <Owners>FrogmoreComputerServices</Owners>
+    <Copyright>Copyright 2019 Frogmore Computer Services Ltd</Copyright>
+    <VersionPrefix>0.5.1</VersionPrefix>
+  </PropertyGroup>
+</Project>
