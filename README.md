@@ -23,6 +23,11 @@ To install Raw Print, run the following command in the [Package Manager Console]
 
 	PM> Install-Package RawPrint
 
+*2019-09-12 Version 0.5.0*
+
+Job arguments now include the printer name.
+License moved to Frogmore Computer Services Ltd (still BSD).
+
 *2018-01-24 Version 0.4.0*
 
 IPrinter now includes a *OnJobCreated* event which fires just as the job is started, use this to modify the job information.

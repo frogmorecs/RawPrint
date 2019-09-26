@@ -6,13 +6,16 @@
     <title>Raw Print</title>
     <authors>$author$</authors>
     <owners>$author$</owners>
-    <licenseUrl>https://github.com/tonyedgecombe/RawPrint/blob/master/LICENSE</licenseUrl>
-    <projectUrl>https://github.com/tonyedgecombe/RawPrint</projectUrl>
+    <license type="file">LICENSE</license>
+    <projectUrl>https://github.com/frogmorecs/RawPrint</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>.Net library to send files directly to a Windows printer bypassing the printer driver.</description>
     <summary>Send PostScript, PCL or other print file types directly to a printer. Supports printers using v4 drivers.</summary>
     <releaseNotes>Initial release.</releaseNotes>
-    <copyright>Copyright 2017 Frogmore Computer Services Ltd</copyright>
+    <copyright>Copyright 2019 Frogmore Computer Services Ltd</copyright>
     <tags>RawPrint Raw Print PCL PostScript</tags>
   </metadata>
+  <files>
+    <file src="../LICENSE"/>
+  </files>
 </package>
