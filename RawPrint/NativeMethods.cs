@@ -3,15 +3,13 @@ using System.Runtime.InteropServices;
 
 namespace RawPrint
 {
-    // ReSharper disable InconsistentNaming
-    // ReSharper disable FieldCanBeMadeReadOnly.Local
     [Flags]
     internal enum PRINTER_ACCESS_MASK : uint
     {
         PRINTER_ACCESS_ADMINISTER = 0x00000004,
         PRINTER_ACCESS_USE = 0x00000008,
         PRINTER_ACCESS_MANAGE_LIMITED = 0x00000040,
-        PRINTER_ALL_ACCESS = 0x000F000C,
+        PRINTER_ALL_ACCESS = 0x000F000C
     }
 
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode)]
@@ -19,7 +17,7 @@ namespace RawPrint
     {
         public string pDatatype;
 
-        private IntPtr pDevMode;
+        private readonly IntPtr pDevMode;
 
         public PRINTER_ACCESS_MASK DesiredPrinterAccess;
     }
@@ -89,8 +87,4 @@ namespace RawPrint
         [DllImport("winspool.drv", EntryPoint = "SetJobA", SetLastError = true)]
         public static extern int SetJob(IntPtr hPrinter, uint JobId, uint Level, IntPtr pJob, uint Command_Renamed);
     }
-
-
-    // ReSharper restore FieldCanBeMadeReadOnly.Local
-    // ReSharper restore InconsistentNaming
 }
