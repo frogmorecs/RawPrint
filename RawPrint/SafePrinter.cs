@@ -140,9 +140,7 @@ namespace RawPrint
 
         public static SafePrinter OpenPrinter(string printerName, ref PRINTER_DEFAULTS defaults)
         {
-            IntPtr hPrinter;
-
-            if (NativeMethods.OpenPrinterW(printerName, out hPrinter, ref defaults) == 0)
+            if (NativeMethods.OpenPrinterW(printerName, out IntPtr hPrinter, ref defaults) == 0)
             {
                 throw new Win32Exception();
             }

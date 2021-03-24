@@ -9,22 +9,16 @@ namespace RawPrint
         public event JobCreatedHandler OnJobCreated;
 
         public void PrintRawFile(string printer, string path, bool paused)
-        {
-            PrintRawFile(printer, path, path, paused);
-        }
+            => PrintRawFile(printer, path, path, paused);
 
         public void PrintRawFile(string printer, string path, string documentName, bool paused)
         {
-            using (var stream = File.OpenRead(path))
-            {
-                PrintRawStream(printer, stream, documentName, paused);
-            }
+            using var stream = File.OpenRead(path);
+            PrintRawStream(printer, stream, documentName, paused);
         }
 
         public void PrintRawStream(string printer, Stream stream, string documentName, bool paused)
-        {
-            PrintRawStream(printer, stream, documentName, paused, 1);
-        }
+            => PrintRawStream(printer, stream, documentName, paused, 1);
 
         public void PrintRawStream(string printer, Stream stream, string documentName, bool paused, int pagecount)
         {
@@ -33,10 +27,8 @@ namespace RawPrint
                 DesiredPrinterAccess = PRINTER_ACCESS_MASK.PRINTER_ACCESS_USE
             };
 
-            using (var safePrinter = SafePrinter.OpenPrinter(printer, ref defaults))
-            {
-                DocPrinter(safePrinter, documentName, IsXPSDriver(safePrinter) ? "XPS_PASS" : "RAW", stream, paused, pagecount, printer);
-            }
+            using var safePrinter = SafePrinter.OpenPrinter(printer, ref defaults);
+            DocPrinter(safePrinter, documentName, IsXPSDriver(safePrinter) ? "XPS_PASS" : "RAW", stream, paused, pagecount, printer);
         }
 
         private static bool IsXPSDriver(SafePrinter printer)
@@ -58,10 +50,10 @@ namespace RawPrint
 
             if (paused)
             {
-                NativeMethods.SetJob(printer.DangerousGetHandle(), id, 0, IntPtr.Zero, (int) JobControl.Pause);
+                NativeMethods.SetJob(printer.DangerousGetHandle(), id, 0, IntPtr.Zero, (int)JobControl.Pause);
             }
 
-            OnJobCreated?.Invoke(this, new JobCreatedEventArgs {Id = id, PrinterName = printerName});
+            OnJobCreated?.Invoke(this, new JobCreatedEventArgs { Id = id, PrinterName = printerName });
 
             try
             {
@@ -111,17 +103,13 @@ namespace RawPrint
         [Obsolete]
         public static void PrintFile(string printer, string path, string documentName)
         {
-            using (var stream = File.OpenRead(path))
-            {
-                PrintStream(printer, stream, documentName);
-            }
+            using var stream = File.OpenRead(path);
+            PrintStream(printer, stream, documentName);
         }
 
         [Obsolete]
         public static void PrintFile(string printer, string path)
-        {
-            PrintFile(printer, path, path);
-        }
+            => PrintFile(printer, path, path);
 
         [Obsolete]
         public static void PrintStream(string printer, Stream stream, string documentName)
@@ -131,11 +119,9 @@ namespace RawPrint
                 DesiredPrinterAccess = PRINTER_ACCESS_MASK.PRINTER_ACCESS_USE
             };
 
-            using (var safePrinter = SafePrinter.OpenPrinter(printer, ref defaults))
-            {
-                var ptr = new Printer();
-                ptr.DocPrinter(safePrinter, documentName, IsXPSDriver(safePrinter) ? "XPS_PASS" : "RAW", stream, false, 1, printer);
-            }
+            using var safePrinter = SafePrinter.OpenPrinter(printer, ref defaults);
+            var ptr = new Printer();
+            ptr.DocPrinter(safePrinter, documentName, IsXPSDriver(safePrinter) ? "XPS_PASS" : "RAW", stream, false, 1, printer);
         }
     }
 }

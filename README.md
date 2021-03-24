@@ -7,21 +7,29 @@ Send PostScript, PCL or other print file types directly to a printer.
 
 Requires .Net 4 runtime on Windows XP to 10 and Server 2003 to 2012.
 
-Usage:
+**Usage:**
+```CSharp
+using RawPrint;
 
-        using RawPrint;
-	
-        // Create an instance of the Printer
-        IPrinter printer = new Printer();
-    
-        // Print the file
-        printer.PrintRawFile(PrinterName, Filepath, Filename);
+// Create an instance of the Printer
+IPrinter printer = new Printer();
 
-Installation:
+// Print the file
+printer.PrintRawFile(PrinterName, Filepath, Filename);
+```
+
+**Installation:**
 
 To install Raw Print, run the following command in the [Package Manager Console](http://docs.nuget.org/docs/start-here/using-the-package-manager-console)
+```Powershell
+PM> Install-Package RawPrint
+```
 
-	PM> Install-Package RawPrint
+*2021-03-24 Version 0.5.1*
+
+Multitargeting .NET library:
+- .NET 4.0
+- .NET Standard 2.1
 
 *2019-09-12 Version 0.5.0*
 
